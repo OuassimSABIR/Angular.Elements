@@ -1,32 +1,52 @@
 {
-  "name": "elements-ngx",
-  "version": "0.0.0",
+  "name": "@ouassimsabir/elements-ngx",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall:bak": "ngcc",
+    "postinstall": "ngcc",
+    "build:headerApp:externals": "ng build --extra-webpack-config projects/header-app/webpack.externals.js --prod --project headerApp --single-bundle --output-hashing none && node build-elements.js headerApp",
+    "build:footerApp:externals": "ng build --extra-webpack-config projects/footer-app/webpack.externals.js --prod --project footerApp --single-bundle --output-hashing none && node build-elements.js footerApp",
+    "build:mainApp:externals": "ng build --extra-webpack-config projects/main-app/webpack.externals.js --prod --project mainApp --single-bundle --output-hashing none && node build-elements.js mainApp",
+    "build:sideApp:externals": "ng build --extra-webpack-config projects/side-app/webpack.externals.js --prod --project sideApp --single-bundle --output-hashing none && node build-elements.js sideApp",
+    "build:subApp:externals": "ng build --extra-webpack-config projects/sub-app/webpack.externals.js --prod --project subApp --single-bundle --output-hashing none && node build-elements.js subApp"
   },
-  "private": true,
+  "repository": {
+    "url": "https://github.com/OuassimSABIR/Angular.Elements.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "@angular/animations": "~12.0.5",
     "@angular/common": "~12.0.5",
     "@angular/compiler": "~12.0.5",
     "@angular/core": "~12.0.5",
+    "@angular/elements": "~9.0.1",
     "@angular/forms": "~12.0.5",
     "@angular/platform-browser": "~12.0.5",
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "document-register-element": "^1.7.2",
+    "ngx-build-plus": "^12.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~12.0.5",
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "concat": "^1.0.3",
+    "fs-extra": "^10.1.0",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
